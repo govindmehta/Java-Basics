@@ -1,3 +1,7 @@
+import employee.Employee;
+import person.Person;
+import student.Student;
+
 /**
  * Main class demonstrating all OOP concepts:
  * - Polymorphism

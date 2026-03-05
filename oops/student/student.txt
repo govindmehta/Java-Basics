@@ -1,0 +1,166 @@
+1️⃣ Encapsulation
+
+Encapsulation means hiding internal data and allowing access through methods.
+
+In your code:
+
+    private String studentName;
+    private int studentId;
+    private double cgpa;
+    private String email;
+
+These variables are private, so they cannot be accessed directly from outside the class.
+
+Instead we use getters and setters.
+
+
+2️⃣ Getters and Setters
+
+They are methods used to read and update private variables.
+
+Example:
+
+Getter (read value):
+
+    public String getStudentName() {
+        return this.studentName;
+    }
+
+Setter (modify value):
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+This helps control how data is modified.
+
+Example validation in setter:
+
+    if (cgpa >= 0.0 && cgpa <= 4.0)
+
+
+3️⃣ this Keyword
+
+`this` refers to the current object.
+
+Example:
+
+    this.studentName = studentName;
+
+Left side → instance variable
+Right side → parameter passed to constructor
+
+Without `this`, Java can't distinguish them.
+
+
+4️⃣ Constructor
+
+A constructor is a special method used to initialize objects.
+
+It runs automatically when an object is created.
+
+Default constructor:
+
+    public Student()
+
+Parameterized constructor:
+
+    public Student(String studentName, int studentId, double cgpa, String email)
+
+Example usage:
+
+    Student s1 = new Student();
+    Student s2 = new Student("Govind", 101, 3.8, "govind@email.com");
+
+
+5️⃣ Naming Convention
+
+Java follows standard naming rules:
+
+    Type              Convention      Example
+    ──────────────────────────────────────────────
+    Class             PascalCase      Student
+    Variables         camelCase       studentName
+    Methods           camelCase       getStudentName()
+    Constants         UPPER_CASE      INSTITUTION_NAME
+
+
+6️⃣ Static Variable
+
+A static variable is shared by all objects of the class.
+
+Example:
+
+    private static int totalStudents = 0;
+
+If 3 objects are created:
+
+    Student s1 = new Student();
+    Student s2 = new Student();
+    Student s3 = new Student();
+
+Then:
+
+    totalStudents = 3
+
+It belongs to the class, not individual objects.
+
+
+7️⃣ Static Block
+
+A static block runs once when the class is loaded into memory.
+
+Example:
+
+    static {
+        System.out.println("Static Block: Class loaded!");
+        totalStudents = 0;
+    }
+
+It is used for initializing static variables.
+
+Runs before any object is created.
+
+
+8️⃣ Static Method
+
+A static method belongs to the class, not objects.
+
+Example:
+
+    public static int getTotalStudents()
+
+Call it like this:
+
+    Student.getTotalStudents();
+
+No object required.
+
+
+9️⃣ Instance Method
+
+An instance method works on object data, so it needs an object.
+
+Example:
+
+    public void displayStudentInfo()
+
+Usage:
+
+    Student s = new Student();
+    s.displayStudentInfo();
+
+
+✅ Quick Summary
+
+    Concept              Meaning
+    ────────────────────────────────────────────────
+    Encapsulation        Hide data using private
+    Getters/Setters      Access or modify private data
+    this                 Refers to current object
+    Constructor          Initializes object
+    Naming Convention    Standard naming rules
+    Static Variable      Shared by all objects
+    Static Block         Runs once when class loads
+    Static Method        Called using class name
+    Instance Method      Called using object

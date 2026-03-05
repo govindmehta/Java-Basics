@@ -1,0 +1,206 @@
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣ PARENT CLASS
+
+    public class Person
+
+A parent class (superclass) is a class whose properties and methods can be 
+inherited by another class.
+
+Example:
+
+    class Student extends Person
+
+Here:
+    • Person → parent class
+    • Student → child class
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+2️⃣ INHERITANCE
+
+Inheritance means one class can reuse the fields and methods of another class.
+
+Example:
+
+    class Student extends Person
+
+Now Student automatically gets:
+    • name
+    • age
+    • displayInfo()
+    • work()
+
+This avoids code duplication.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+3️⃣ WHY INHERITANCE IS NEEDED
+
+Without Inheritance:
+    • Student class → name, age
+    • Teacher class → name, age
+    • Employee class → name, age
+
+You would have to repeat the same code many times.
+
+With Inheritance:
+    Person
+     ├─ Student
+     ├─ Teacher
+     └─ Employee
+
+Common properties are written once in Person.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+4️⃣ ACCESS MODIFIER: PROTECTED
+
+    protected String name;
+    protected int age;
+
+protected means the variable is accessible:
+    1. Inside the same class
+    2. Inside the same package
+    3. Inside child classes (subclasses)
+
+Example:
+
+    class Student extends Person {
+        void print() {
+            System.out.println(name); // allowed
+        }
+    }
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+5️⃣ ACCESS MODIFIER: PUBLIC
+
+    public Person(String name, int age)
+
+public means the method or constructor can be accessed from anywhere.
+
+Example:
+
+    Person p = new Person("Govind", 21);
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+6️⃣ CONSTRUCTOR
+
+    public Person(String name, int age)
+
+A constructor is used to initialize object data when the object is created.
+
+Example:
+
+    Person p = new Person("Govind", 21);
+
+Output:
+
+    Person Constructor called
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+7️⃣ THIS KEYWORD
+
+    this.name = name;
+    this.age = age;
+
+this refers to the current object.
+    • Left side → instance variable
+    • Right side → constructor parameter
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+8️⃣ METHOD DEFINITION
+
+Example method:
+
+    public void displayInfo()
+
+A method is a function inside a class.
+
+This method prints the person's information.
+
+Example usage:
+
+    p.displayInfo();
+
+Output:
+
+    Name: Govind, Age: 21
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+9️⃣ METHOD TO BE OVERRIDDEN
+
+    public void work()
+
+This method is designed so that child classes can provide their own 
+implementation.
+
+Example:
+
+    class Student extends Person {
+
+        public Student(String name, int age) {
+            super(name, age);
+        }
+
+        @Override
+        public void work() {
+            System.out.println(name + " is studying");
+        }
+    }
+
+Now Student changes the behavior of work().
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔟 SINGLE INHERITANCE
+
+Single inheritance means one child class inherits from one parent class.
+
+Example:
+
+    Person
+       ↑
+     Student
+
+Java supports single inheritance for classes.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+QUICK SUMMARY
+
+┌─────────────────────┬──────────────────────────────────────────┐
+│ Concept             │ Meaning                                  │
+├─────────────────────┼──────────────────────────────────────────┤
+│ Parent Class        │ Class that other classes inherit         │
+│ Inheritance         │ Reusing properties/methods from class    │
+│ Protected           │ Accessible in subclass and same package  │
+│ Public              │ Accessible everywhere                    │
+│ Constructor         │ Initializes object                       │
+│ this                │ Refers to current object                 │
+│ Method              │ Function inside class                    │
+│ Method Overriding   │ Child class changes parent method        │
+│ Single Inheritance  │ One parent → one child                   │
+└─────────────────────┴──────────────────────────────────────────┘
+
+
+
+public      → everywhere
+protected   → package + subclass
+default     → package only
+private     → class only

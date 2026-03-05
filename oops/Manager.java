@@ -1,3 +1,5 @@
+import employee.Employee;
+
 /**
  * Grandchild Class: Demonstrates Multilevel Inheritance
  * Person -> Employee -> Manager (multilevel)

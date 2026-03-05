@@ -1,0 +1,340 @@
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣ PACKAGE
+
+    package employee;
+
+A package is used to organize related classes into folders.
+
+Example structure:
+
+    project
+     ├── person
+     │    └── Person.java
+     └── employee
+          └── Employee.java
+
+This helps keep code organized and easier to manage.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+2️⃣ IMPORT
+
+    import person.Person;
+
+import allows this class to use another class from a different package.
+
+Here it imports the Person class so Employee can inherit from it.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+3️⃣ INHERITANCE (EXTENDS)
+
+    public class Employee extends Person
+
+This means Employee inherits from Person.
+
+So Employee automatically gets:
+    • name
+    • age
+    • displayInfo()
+    • work()
+
+from the Person class.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+4️⃣ CONSTRUCTOR IN CHILD CLASS
+
+    public Employee(String name, int age, String employeeId, double salary)
+
+This constructor initializes an Employee object.
+
+Example usage:
+
+    Employee e = new Employee("Govind", 22, "E101", 50000);
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+5️⃣ SUPER KEYWORD
+
+    super(name, age);
+
+super is used to call the parent class constructor.
+
+Since name and age belong to Person, the child class sends those values to the 
+parent.
+
+Execution order:
+    1. Person Constructor called
+    2. Employee Constructor called
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+6️⃣ THIS KEYWORD
+
+    this.employeeId = employeeId;
+    this.salary = salary;
+
+this refers to the current object.
+    • Left side → instance variable
+    • Right side → parameter passed to constructor
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+7️⃣ GETTERS AND SETTERS
+
+Example:
+
+    public String getEmployeeId() {
+        return this.employeeId;
+    }
+
+They allow controlled access to private variables.
+
+Because:
+
+    private String employeeId;
+    private double salary;
+
+cannot be accessed directly outside the class.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+8️⃣ METHOD OVERRIDING
+
+    @Override
+    public void work()
+
+Method overriding means child class changes the behavior of a parent method.
+
+Parent class:
+
+    public void work() {
+        System.out.println(this.name + " is working");
+    }
+
+Child class overrides it:
+
+    System.out.println(this.name + " is working as employee...");
+
+Now the child class provides its own implementation.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+9️⃣ @OVERRIDE ANNOTATION
+
+    @Override
+
+This tells Java that the method overrides a parent class method.
+
+If the method name or signature is wrong, Java will give an error.
+
+So it helps avoid mistakes.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔟 USING SUPER TO CALL PARENT METHOD
+
+    super.displayInfo();
+
+This calls the parent class method.
+
+So the program first prints:
+
+    Name: Govind, Age: 22
+
+Then prints employee details.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣1️⃣ INSTANCE VARIABLES
+
+    private String employeeId;
+    private double salary;
+
+These belong to each Employee object individually.
+
+Example:
+    • Employee e1 → employeeId = E101
+    • Employee e2 → employeeId = E102
+
+Each object stores its own values.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+EXAMPLE EXECUTION
+
+    Employee e = new Employee("Govind", 22, "E101", 50000);
+    e.displayEmployeeInfo();
+    e.work();
+
+Output:
+
+    Person Constructor called
+    Employee Constructor called
+    Name: Govind, Age: 22
+    Employee ID: E101, Salary: 50000
+    Govind is working as employee with ID: E101
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+DEEP DIVE: HOW DOES THE SUPER KEYWORD WORK?
+
+The super keyword is used to refer to the parent (superclass) part of an object. 
+It mainly does two things.
+
+
+PART 1️⃣: CALLING THE PARENT CONSTRUCTOR
+
+When a child class object is created, the parent constructor must run first.
+
+Example in your code:
+
+    super(name, age);
+
+This calls the Person constructor.
+
+Flow when object is created:
+
+    Employee e = new Employee("Govind", 22, "E101", 50000);
+
+Execution order:
+    1. Person constructor runs
+    2. Employee constructor runs
+
+Because of:
+
+    super(name, age);
+
+Without super:
+
+Your Person class does not have a default constructor, so Java would give an 
+error.
+
+
+PART 2️⃣: ACCESSING PARENT METHODS
+
+super can call methods from the parent class.
+
+Example:
+
+    super.displayInfo();
+
+This executes the Person class method.
+
+Then the child class prints its own data.
+
+Example output:
+
+    Name: Govind, Age: 22
+    Employee ID: E101, Salary: 50000
+
+
+PART 3️⃣: ACCESSING PARENT VARIABLES (LESS COMMON)
+
+You can also access parent variables.
+
+Example:
+
+    System.out.println(super.name);
+
+But usually just name works because it is protected.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+HOW JAVA INTERNALLY THINKS
+
+When you create:
+
+    Employee e = new Employee(...)
+
+The object actually contains two parts:
+
+    Employee Object
+     ├── Person part
+     │     • name
+     │     • age
+     │     • displayInfo()
+     │
+     └── Employee part
+           • employeeId
+           • salary
+
+super tells Java:
+
+    "Use the Person part of this object"
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+IMPORTANT RULE: SUPER() PLACEMENT
+
+super() must be the first statement in the constructor.
+
+✅ Correct:
+
+    public Employee(...) {
+        super(name, age);
+        this.employeeId = employeeId;
+    }
+
+❌ Wrong:
+
+    public Employee(...) {
+        this.employeeId = employeeId;
+        super(name, age);  // ❌ Error!
+    }
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+QUICK SUMMARY
+
+┌──────────────────────┬───────────────────────────────────────────┐
+│ Concept              │ Meaning                                   │
+├──────────────────────┼───────────────────────────────────────────┤
+│ Package              │ Organizes classes into folders            │
+│ Import               │ Allows using class from another package   │
+│ Inheritance          │ Child class inherits parent properties    │
+│ super                │ Access parent constructor/method          │
+│ this                 │ Refers to current object                  │
+│ Constructor          │ Initializes object                        │
+│ Getters/Setters      │ Access private variables                  │
+│ Method Overriding    │ Child class changes parent method         │
+│ @Override            │ Ensures method overriding is correct      │
+└──────────────────────┴───────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+USE OF SUPER - QUICK REFERENCE
+
+┌────────────────┬──────────────────────────────────┐
+│ Use of super   │ Purpose                          │
+├────────────────┼──────────────────────────────────┤
+│ super(...)     │ Calls parent constructor         │
+│ super.method() │ Calls parent method              │
+│ super.variable │ Access parent variable           │
+└────────────────┴──────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 SIMPLE WAY TO REMEMBER
+
+    this   → current class
+    super  → parent class

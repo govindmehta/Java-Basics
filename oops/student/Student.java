@@ -1,3 +1,4 @@
+package student;
 /**
  * Demonstrates: Encapsulation, Getters and Setters, This keyword, Constructor,
  * Naming Convention, Static Variable, Static Block, Static Method
