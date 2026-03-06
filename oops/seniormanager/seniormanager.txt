@@ -1,0 +1,71 @@
+📦 Package Import
+
+    import manager.Manager;
+
+This allows the SeniorManager class to use the Manager class from the manager package.
+
+
+📋 Class Inheritance (extends)
+
+    public class SeniorManager extends Manager
+
+SeniorManager inherits properties and methods from the Manager class (which already inherits from Employee and Person).
+
+
+🔗 Multiple Inheritance through Interfaces
+
+    implements Trainable, Promotable
+
+Java does not support multiple inheritance of classes, but it allows a class to implement multiple interfaces.
+
+
+📝 Instance Variables
+
+    private boolean promotionEligible;
+    private boolean trainingCompleted;
+
+These variables store information about the promotion eligibility and training status of the senior manager.
+
+
+🔨 Constructor with super
+
+    super(name, age, employeeId, salary, teamSize, department);
+
+Calls the Manager class constructor to initialize inherited attributes.
+
+
+✨ Interface Implementation
+
+The class provides definitions for methods declared in interfaces.
+
+Example from Trainable interface:
+
+    public void attend_training()
+    public void learnSkill(String skill)
+
+Example from Promotable interface:
+
+    public void applyForPromotion()
+    public void getPromotionStatus()
+
+
+🔄 Method Overriding
+
+    @Override
+    public void work()
+
+The SeniorManager class provides its own implementation of the work() method inherited from parent classes.
+
+
+🎯 Use of Instance Variables in Methods
+
+    this.trainingCompleted = true;
+
+The method updates the object's state when training is attended.
+
+
+❓ Conditional Operator (?:)
+
+    (this.promotionEligible ? "Eligible" : "Not Eligible")
+
+Used to print promotion status based on the boolean value.

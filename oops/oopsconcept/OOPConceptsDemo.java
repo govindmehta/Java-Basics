@@ -1,5 +1,10 @@
+package oopsconcept;
+
 import employee.Employee;
+import immutable.ImmutableClass;
+import manager.Manager;
 import person.Person;
+import seniormanager.SeniorManager;
 import student.Student;
 
 /**
@@ -90,8 +95,12 @@ public class OOPConceptsDemo {
         // ===== Access Modifiers Demo =====
         System.out.println("\n===== ACCESS MODIFIERS =====");
         System.out.println("Protected 'name' in Person (accessible in subclasses):");
-        System.out.println("Employee name: " + emp1.name);
-        System.out.println("Manager name: " + mgr1.name);
+        // System.out.println("Employee name: " + emp1.name);
+        //using getter method to access protected variable
+        System.out.println("Employee name: " + emp1.getEmployeeName());
+        // System.out.println("Manager name: " + mgr1.name);
+        //using getter method to access protected variable
+        System.out.println("Manager name: " + mgr1.getManagerName());
         
         System.out.println("\n========== DEMONSTRATION COMPLETE ==========");
     }

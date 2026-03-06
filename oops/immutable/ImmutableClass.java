@@ -1,3 +1,5 @@
+package immutable;
+
 /**
  * Demonstrates Final keyword
  * final classes cannot be extended (inherited)

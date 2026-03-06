@@ -1,0 +1,268 @@
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣ MULTILEVEL INHERITANCE
+
+A class inherits from another class that already inherits from another class.
+
+In your code: Manager extends Employee, and Employee extends Person, forming:
+
+    Person → Employee → Manager
+
+This creates a hierarchy where Manager has access to all properties and methods 
+from both Employee and Person.
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+2️⃣ PACKAGE IMPORT
+
+Used to access classes from another package.
+
+    import employee.Employee;
+
+This allows the Manager class to use the Employee class from the employee 
+package.
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+3️⃣ CLASS INHERITANCE (EXTENDS)
+
+Enables a class to inherit properties and methods of another class.
+
+    public class Manager extends Employee
+
+Here Manager inherits fields and methods from Employee:
+    • String name (from Person)
+    • int age (from Person)
+    • String employeeId (from Employee)
+    • double salary (from Employee)
+    • displayInfo() method (from Person)
+    • work() method (from Employee)
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+4️⃣ INSTANCE VARIABLES
+
+Variables that belong to an object of the class.
+
+    private int teamSize;
+    private String department;
+
+These store information specific to a Manager object.
+
+Example:
+    • Manager 1 → teamSize = 5, department = "Engineering"
+    • Manager 2 → teamSize = 10, department = "Sales"
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+5️⃣ PARAMETERIZED CONSTRUCTOR
+
+A constructor that initializes object values using parameters.
+
+    public Manager(String name, int age, String employeeId, double salary, 
+                   int teamSize, String department)
+
+It sets the manager's name, age, employee details, team size, and department.
+
+Example usage:
+
+    Manager m = new Manager("Govind", 30, "M101", 100000, 5, "Engineering");
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+6️⃣ SUPER KEYWORD
+
+Used to call a parent class constructor or method.
+
+    super(name, age, employeeId, salary);
+
+This calls the Employee constructor to initialize inherited attributes.
+
+Execution order when creating Manager object:
+    1. Person constructor runs
+    2. Employee constructor runs
+    3. Manager constructor runs
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+7️⃣ ENCAPSULATION
+
+Data is kept private and accessed through methods.
+
+    private int teamSize;
+    private String department;
+
+These variables cannot be accessed directly from outside the class.
+
+Why Encapsulation is Important:
+    • Data Protection - Values cannot be changed arbitrarily
+    • Control - Methods can validate data before setting
+    • Flexibility - Internal implementation can change without affecting outside code
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+8️⃣ GETTER METHODS
+
+Methods used to read private variables.
+
+    public int getTeamSize() {
+        return this.teamSize;
+    }
+
+    public String getDepartment() {
+        return this.department;
+    }
+
+They provide controlled access to teamSize and department.
+
+Example usage:
+
+    Manager m = new Manager("Govind", 30, "M101", 100000, 5, "Engineering");
+    System.out.println(m.getTeamSize());      // Output: 5
+    System.out.println(m.getDepartment());   // Output: Engineering
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+9️⃣ METHOD OVERRIDING
+
+A subclass provides its own implementation of a parent class method.
+
+    @Override
+    public void work()
+
+The Manager class changes how the work() method behaves.
+
+Parent (Employee) implementation:
+
+    public void work() {
+        System.out.println(this.name + " is working as employee...");
+    }
+
+Manager implementation:
+
+    @Override
+    public void work() {
+        System.out.println(this.name + " is managing team of " + teamSize);
+    }
+
+Now when you call work() on a Manager object, it executes the Manager version.
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔟 DYNAMIC METHOD DISPATCH (RUNTIME POLYMORPHISM)
+
+The method that runs depends on the object type at runtime.
+
+Example:
+
+    Employee e = new Manager("Govind", 30, "M101", 100000, 5, "Engineering");
+    e.work();
+
+Even though e is declared as Employee type, it actually holds a Manager object.
+
+At runtime, Java executes the Manager's work() method.
+
+Output:
+
+    Govind is managing team of 5
+
+This is called runtime polymorphism because the method decision is made at 
+runtime based on the actual object type.
+
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣1️⃣ ACCESSING PARENT METHODS
+
+The super keyword can also call parent class methods.
+
+    super.displayEmployeeInfo();
+
+This executes the displayEmployeeInfo() method defined in the Employee class.
+
+Example:
+
+    class Manager extends Employee {
+        @Override
+        public void displayManager() {
+            super.displayEmployeeInfo();  // Calls Employee method
+            System.out.println("Team Size: " + teamSize);
+        }
+    }
+
+Output:
+
+    Name: Govind, Age: 30
+    Employee ID: M101, Salary: 100000
+    Team Size: 5
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+INHERITANCE HIERARCHY
+
+    Person (Superclass)
+     │
+     ├─ name
+     ├─ age
+     ├─ displayInfo()
+     └─ work()
+         │
+         └─ Employee (extends Person)
+             │
+             ├─ employeeId
+             ├─ salary
+             ├─ getEmployeeId()
+             ├─ getSalary()
+             └─ work() [overridden]
+                 │
+                 └─ Manager (extends Employee)
+                     │
+                     ├─ teamSize
+                     ├─ department
+                     ├─ getTeamSize()
+                     ├─ getDepartment()
+                     └─ work() [overridden]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+QUICK SUMMARY
+
+┌──────────────────────────────┬───────────────────────────────────────┐
+│ Concept                      │ Meaning                               │
+├──────────────────────────────┼───────────────────────────────────────┤
+│ Multilevel Inheritance       │ Class → Class → Class chain           │
+│ Package Import               │ Access classes from other packages    │
+│ Class Inheritance            │ Inherit from another class            │
+│ Instance Variables           │ Variables specific to each object     │
+│ Parameterized Constructor    │ Constructor with parameters           │
+│ super Keyword                │ Call parent constructor/method        │
+│ Encapsulation                │ Keep data private, access via methods │
+│ Getter Methods               │ Read private variables safely         │
+│ Method Overriding            │ Child class changes parent method     │
+│ Dynamic Method Dispatch      │ Method choice at runtime              │
+│ Accessing Parent Methods     │ Use super to call parent methods      │
+└──────────────────────────────┴───────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════

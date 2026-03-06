@@ -1,3 +1,7 @@
+package seniormanager;
+
+import manager.Manager;
+
 /**
  * Class implementing multiple interfaces: Demonstrates Multiple Inheritance through interfaces
  */

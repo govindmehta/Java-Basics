@@ -1,4 +1,5 @@
-1️⃣ Encapsulation
+1️⃣ ENCAPSULATION
+─────────────────────────────────────────────────────────────────────
 
 Encapsulation means hiding internal data and allowing access through methods.
 
@@ -9,16 +10,14 @@ In your code:
     private double cgpa;
     private String email;
 
-These variables are private, so they cannot be accessed directly from outside the class.
+These variables are private, so they cannot be accessed directly from outside
+the class. Instead, we use getters and setters.
 
-Instead we use getters and setters.
 
-
-2️⃣ Getters and Setters
+2️⃣ GETTERS AND SETTERS
+─────────────────────────────────────────────────────────────────────
 
 They are methods used to read and update private variables.
-
-Example:
 
 Getter (read value):
 
@@ -36,10 +35,15 @@ This helps control how data is modified.
 
 Example validation in setter:
 
-    if (cgpa >= 0.0 && cgpa <= 4.0)
+    public void setCgpa(double cgpa) {
+        if (cgpa >= 0.0 && cgpa <= 4.0) {
+            this.cgpa = cgpa;
+        }
+    }
 
 
-3️⃣ this Keyword
+3️⃣ THIS KEYWORD
+─────────────────────────────────────────────────────────────────────
 
 `this` refers to the current object.
 
@@ -47,25 +51,31 @@ Example:
 
     this.studentName = studentName;
 
-Left side → instance variable
-Right side → parameter passed to constructor
+    Left side  → instance variable
+    Right side → parameter passed to constructor
 
 Without `this`, Java can't distinguish them.
 
 
-4️⃣ Constructor
+4️⃣ CONSTRUCTOR
+─────────────────────────────────────────────────────────────────────
 
 A constructor is a special method used to initialize objects.
-
 It runs automatically when an object is created.
 
 Default constructor:
 
-    public Student()
+    public Student() {
+    }
 
 Parameterized constructor:
 
-    public Student(String studentName, int studentId, double cgpa, String email)
+    public Student(String studentName, int studentId, double cgpa, String email) {
+        this.studentName = studentName;
+        this.studentId = studentId;
+        this.cgpa = cgpa;
+        this.email = email;
+    }
 
 Example usage:
 
@@ -73,16 +83,17 @@ Example usage:
     Student s2 = new Student("Govind", 101, 3.8, "govind@email.com");
 
 
-5️⃣ Naming Convention
+5️⃣ NAMING CONVENTIONS
+─────────────────────────────────────────────────────────────────────
 
 Java follows standard naming rules:
 
-    Type              Convention      Example
-    ──────────────────────────────────────────────
-    Class             PascalCase      Student
-    Variables         camelCase       studentName
-    Methods           camelCase       getStudentName()
-    Constants         UPPER_CASE      INSTITUTION_NAME
+    Type              │ Convention      │ Example
+    ──────────────────┼─────────────────┼──────────────────────
+    Class             │ PascalCase      │ Student
+    Variables         │ camelCase       │ studentName
+    Methods           │ camelCase       │ getStudentName()
+    Constants         │ UPPER_CASE      │ INSTITUTION_NAME
 
 
 6️⃣ Static Variable

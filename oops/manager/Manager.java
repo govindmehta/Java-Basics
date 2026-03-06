@@ -1,3 +1,4 @@
+package manager;
 import employee.Employee;
 
 /**
@@ -26,6 +27,11 @@ public class Manager extends Employee {
     
     public String getDepartment() {
         return this.department;
+    }
+
+    public String getManagerName() {
+        // Accessing parent class variable using super
+        return super.name;
     }
     
     // Method Overriding - Dynamic Method Dispatch

@@ -1,3 +1,4 @@
+package seniormanager;
 /**
  * Interface 2: Demonstrates Multiple Inheritance concept
  */

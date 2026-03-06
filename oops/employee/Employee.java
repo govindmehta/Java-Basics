@@ -36,6 +36,11 @@ public class Employee extends Person {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
+    public String getEmployeeName() {
+        // Accessing parent class variable using super
+        return super.name;
+    }
     
     // Method Overriding - Polymorphism
     @Override

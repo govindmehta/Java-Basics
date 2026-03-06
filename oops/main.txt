@@ -1,0 +1,197 @@
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣ ENCAPSULATION
+
+Encapsulation means wrapping data and methods together in one class and 
+protecting the data from direct access.
+
+Key Idea:
+    • Keep variables private
+    • Access them using getters and setters
+
+Example:
+
+    class Student {
+        private String name;   // private variable
+
+        public void setName(String name) {   // setter
+            this.name = name;
+        }
+
+        public String getName() {   // getter
+            return name;
+        }
+    }
+
+Why It Is Used:
+    • Protects data
+    • Controls how variables are modified
+    • Ensures data validation
+
+Usage Example:
+
+    Student s = new Student();
+    s.setName("John");
+    System.out.println(s.getName());
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+2️⃣ INHERITANCE
+
+Inheritance allows one class to use the properties and methods of another class.
+
+Key Idea:
+    • A child class inherits from a parent class
+    • Child automatically gets all parent features
+
+Example:
+
+    class Person {
+        void speak() {
+            System.out.println("Person speaking");
+        }
+    }
+
+    class Employee extends Person {
+        void work() {
+            System.out.println("Employee working");
+        }
+    }
+
+Usage:
+
+    Employee e = new Employee();
+    e.speak();  // inherited from Person
+    e.work();   // own method
+
+Why It Is Used:
+    • Code reuse
+    • Logical hierarchy
+    • Avoid code duplication
+
+Example Hierarchy:
+
+    Person
+       ↓
+    Employee
+       ↓
+    Manager
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+3️⃣ POLYMORPHISM
+
+Polymorphism means "many forms". One method behaves differently depending on 
+the object.
+
+Two Types:
+
+1️⃣ Compile-time Polymorphism (Method Overloading)
+
+    class Calculator {
+        int add(int a, int b) {
+            return a + b;
+        }
+
+        double add(double a, double b) {
+            return a + b;
+        }
+    }
+
+Same method name, different parameters.
+
+2️⃣ Runtime Polymorphism (Method Overriding)
+
+    class Person {
+        void work() {
+            System.out.println("Person working");
+        }
+    }
+
+    class Employee extends Person {
+        @Override
+        void work() {
+            System.out.println("Employee working");
+        }
+    }
+
+Usage:
+
+    Person p = new Employee();
+    p.work();  // Calls Employee's work()
+
+Output:
+
+    Employee working
+
+This is called dynamic method dispatch - the method that runs depends on the 
+actual object type at runtime.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+4️⃣ ABSTRACTION
+
+Abstraction means hiding implementation details and showing only necessary 
+features.
+
+How It Is Achieved:
+    • Using abstract classes
+    • Using interfaces
+
+Example Using Interface:
+
+    interface Trainable {
+        void attendTraining();
+    }
+
+Class Implementing It:
+
+    class Manager implements Trainable {
+        @Override
+        public void attendTraining() {
+            System.out.println("Manager attending training");
+        }
+    }
+
+Usage:
+
+    Manager m = new Manager();
+    m.attendTraining();
+
+Key Point:
+
+The interface only defines WHAT should happen, not HOW it should happen.
+
+The implementation details are hidden inside the class.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+FOUR PILLARS OF OOP - COMPARISON
+
+┌──────────────┬──────────────────────────┬─────────────────────────────┐
+│ Concept      │ Meaning                  │ Example                     │
+├──────────────┼──────────────────────────┼─────────────────────────────┤
+│ Encapsulation│ Protect data             │ private + getters/setters   │
+│ Inheritance  │ Reuse code               │ class Manager extends...    │
+│ Polymorphism │ One method, many forms   │ Method overriding           │
+│ Abstraction  │ Hide implementation      │ Interfaces and abstract...  │
+└──────────────┴──────────────────────────┴─────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+QUICK MEMORY TRICK
+
+Remember the Four Pillars:
+
+    Encapsulation → Protect data
+    Inheritance   → Reuse code
+    Polymorphism  → Same method, different behavior
+    Abstraction   → Hide details
+
+
+═══════════════════════════════════════════════════════════════════════════════
